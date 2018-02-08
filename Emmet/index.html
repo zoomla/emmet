@@ -1,0 +1,1296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Zoomla逐浪CMS z01.com">
+<title>Emmet-HTML/CSS代码自动补全语法</title>
+<meta name="description" content="Emmet是HTML及CSS代码自动补全方法">
+<meta name="keywords" content="emmet,html,css,补全">
+<meta name="author" content="Zoomla!逐浪CMS团队">
+<link rel="icon" href="//code.z01.com/favicon.ico">
+<link href="../v4/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../boot/dist/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="../v4/assets/css/docs.min.css" rel="stylesheet">
+<link href="emmet.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-light"> 
+
+<div class="collapse navbar-collapse justify-content-end m-0 p-0" id="navbarNavDropdown">
+<ul class="navbar-nav">
+<li class="nav-item"><a class="nav-link" href="../"><i class="fa fa-home"></i> 首页</a></li>
+<li class="nav-item"><a class="nav-link" href="//z01.com">逐浪官网</a></li>
+<li class="nav-item"><a class="nav-link" href="../v4/">Bootstrap 4</a></li>
+<li class="nav-item"><a class="nav-link" href="../Sass/">Sass中国</a></li>
+<li class="nav-item"><a class="nav-link" href="//v.z01.com" target="_blank">H5移动创作</a></li>
+<li class="nav-item"><a class="nav-link" href="//v.ziti163.com/" target="_blank">字体大师</a></li>
+<li class="nav-item"><a class="nav-link" href="../Boot/font.html">Font Awesome奥森图标</a></li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">其它工具</a>
+<div class="dropdown-menu btn-sm ">
+<a class="dropdown-item btn-sm" href="//ad.z01.com" target="_blank">广告源码</a>
+<a class="dropdown-item btn-sm" href="//v.z01.com/mb/" target="_blank">免费模板</a>
+<a class="dropdown-item btn-sm" href="//www.z01.com/tool/" target="_blank">IIS站长工具</a>
+<a class="dropdown-item btn-sm" href="//z01.com/mtv/" target="_blank">开发视频</a>
+<a class="dropdown-item btn-sm" href="//bbs.z01.com" target="_blank">技术社区</a>
+</div>
+</li>
+</ul><a class="btn btn-bd-yellow btn-sm" href="//z01.com/pub/" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> 下载Zoomla!逐浪CMS</a>
+
+</div>
+</nav>
+
+
+<div class="jumbotron">
+  <h1 class="display-3"><svg xmlns="http://www.w3.org/2000/svg" width="65px" height="65px" version="1.1">
+    <title>Emmet Logo</title>
+    <g transform="scale(0.1625)">
+    	<ellipse cx="200" cy="200" rx="200" ry="200" fill="rgb(28,28,32)"/>
+    	<g fill="rgb(215,215,215)" id="Logo" transform="rotate(-45) translate(-162, 133) scale(0.9)">
+    	    <path id="Tip" d="M247,225 L247,190 L293,162 L247,133 L247,99 L352,162 L247,225 Z M247,225" fill="rgb(186,255,169)"/>
+    	    <path id="Base" d="M102,312 L102,12 L207,75 L207,109 L132,64 L132,132 L181,162 L132,191 L132,259 L207,214 L207,249 L102,312 Z M102,312" fill="rgb(122,203,22)"/>
+    	</g>
+    </g>
+</svg>
+Emmet<small class="text-muted">快速语法</small>
+
+
+</h1>
+
+
+
+<p class="lead">Emmet使用特殊的表达式Abbreviations，也就是缩写：这种特殊的表达式会被Emmet解析并转义成结构化的代码块,其使用类似CSS选择器的语法来描述元素在DOM树节点的位置和属性。</p>
+  <hr class="my-4">
+  <p>Emmet是一款编辑器插件，支持多种编辑器支持。在前端开发中，Emmet 使用缩写语法快速编写 HTML、CSS 以及实现其他的功能，极大的提高前端开发效率。</p>
+  <p>在Dreamvweaver中使用 <kbd>Tab</kbd> 或在EditPlus等软件中<kbd>Ctrl</kbd>+<kbd>E</kbd> 快速展开HTML/CSS提效率.</p>  
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="all.html" role="button">完整命令集</a>
+  </p>
+</div>
+
+
+<div class="container-fluid">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-4 col-xl-3 bd-sidebar" style="top: /*12rem*/; max-height: calc(100vh - 12rem);">
+<ul class="sidebar list-unstyled">
+<li>
+<div class="title"><a class="title-inner" href="#a1">一、Emmet的安装与介绍</a></div>
+<dl class="inner">
+<dd><a href="#a1-1" data-id="a1"><i></i>1-1. 用Emmet的好处</a></dd>
+<dd><a href="#a1-2"><i></i>1-2. 安装Emmet</a></dd>
+<dd><a href="#a1-3"><i></i>1-3. 简单的使用样例</a></dd>
+</dl>
+</li>
+<li>
+<div class="title"><a class="title-inner" href="#a2">二. 基本语法</a></div>
+<dl class="inner">
+<dd><a href="#a2-1"><i></i>2-1. 后代：></a></dd>
+<dd><a href="#a2-2"><i></i>2-2. 兄弟：+</a></dd>
+<dd><a href="#a2-3"><i></i>2-3. 上级：^</a></dd>
+<dd><a href="#a2-4"><i></i>2-4. 分组：()</a></dd>
+<dd><a href="#a2-5"><i></i>2-5. 乘法：*</a></dd>
+<dd><a href="#a2-6"><i></i>2-6. 自增符号：$</a></dd>
+<dd><a href="#a2-7"><i></i>2-7. ID和类属性</a></dd>
+<dd><a href="#a2-8"><i></i>2-8. 自定义属性</a></dd>
+<dd><a href="#a2-9"><i></i>2-9. 文本：{}</a></dd>
+<dd><a href="#a2-10"><i></i>2-10. 隐式标签</a></dd>
+</dl>
+</li>
+<li>
+<div class="title"><a class="title-inner" href="#a3">三. HTML标签语法</a></div>
+<dl class="inner">
+<dd><a href="#a3-1"><i></i>3-1. 所有未知的缩写都会转换成标签</a></dd>
+<dd><a href="#a3-2"><i></i>3-2. 基本html标签</a></dd>
+
+</dl>
+</li>
+<li>
+<div class="title"><a class="title-inner" href="#a4">四. CSS</a></div>
+<dl class="inner">
+<dd><a href="#a4-1"><i></i>4-1. CSS模块使用模糊搜索来查找未知的缩写</a></dd>
+<dd><a href="#a4-2"><i></i>4-2. 常用样式简写</a></dd>
+</dl>
+</li>
+<li>
+<div class="title"><a class="title-inner" href="#a5">五. XSL</a></div>
+</li>
+</ul>
+</div>
+<main class="col-12 col-md-8 col-xl-9 py-md-4 pl-md-4 bd-content" role="main">
+<div class="article-body">
+<div class="txt p20">
+<h1 class="title font anchorh1" id="a1">一、Emmet的安装与介绍</h1>
+<p>Emmet (前身为 Zen Coding) 是一个能大幅度提高前端开发效率的工具，能够实现 HTML、CSS 的快速编写。</p>
+<p><img src="images/03.gif" alt="Emmet"/><img src="images/04.gif" alt="Emmet"/></p>
+<p>
+<ul>
+<li>官网地址：<a href="http://emmet.io/" target="_blank">http://emmet.io/</a></li>
+<li>官方文档：<a href="http://docs.emmet.io/cheat-sheet/" target="_blank">http://docs.emmet.io/cheat-sheet/</a></li>
+<li><span style="color: rgb(0, 128, 128); font-weight: bold;">Atom</span>的<span style="color: rgb(0, 128, 128); font-weight: bold;">emmet</span>介绍页面：<a href="https://atom.io/packages/emmet" target="_blank">https://atom.io/packages/emmet</a></li>
+</ul>
+</p>
+<h1 class="title font anchorh2" id="a1-1">1-1. 使用Emmet的好处</h1>
+<p><ul>
+<li>通常大多数的文本编辑器都会允许我们存储和重用一些代码块，我们称之为“片段”。虽然片段能很好地推动我们的生产力，但大多数的实现都有这样一个缺点：我们必须先定义代码片段，并且不能再运行时进行拓展。</li>
+<li>而 <span style="color: rgb(0, 128, 128); font-weight: bold;">Emmet </span>把片段这个概念提高到了一个新的层次：我们可以设置 <span style="color: rgb(0, 128, 128); font-weight: bold;">CSS </span>形式的能够动态被解析的表达式，然后根据输入的缩写来得到相应的内容。<span style="color: rgb(0, 128, 128); font-weight: bold;">Emmet </span>很成熟的并且非常适用于编写 <span style="color: rgb(0, 128, 128); font-weight: bold;">HTML</span>/<span style="color: rgb(0, 128, 128); font-weight: bold;">XML </span>和 <span style="color: rgb(0, 128, 128); font-weight: bold;">CSS</span> 代码的前端开发人员，但也可以用于编程语言。</li>
+</ul>
+</p>
+<h1 class="title font anchorh2" id="a1-2">1-2. 安装Emmet</h1>
+<p><span style="color: rgb(0, 128, 128); font-weight: bold;">Emmet </span>为大部分流行的编辑器都提供了安装插件，<strong>尤其是Adobe Dreamweaver早在2015版中就全面兼容Emmet语法</strong>，只要用tab键就能展开，非常好用。<br/>如果你要在 <span style="color: rgb(0, 128, 128); font-weight: bold;">Atom </span>中使用 <span style="color: rgb(0, 128, 128); font-weight: bold;">Emmet </span>插件，可按下面方法部署：</p>
+<div>（1）点击 <span style="color: rgb(0, 128, 128); font-weight: bold;">Atom </span>的“<span style="color: rgb(0, 128, 128); font-weight: bold;">Preferences</span>”菜单选项（<span style="color: rgb(0, 128, 128); font-weight: bold;">Windows </span>下是“<span style="color: rgb(0, 128, 128); font-weight: bold;">Settings</span>”菜单选项）</p>
+<p>（2）进入到 <span style="color: rgb(0, 128, 128); font-weight: bold;">Install </span>页面。</p>
+<p>（3）搜索“<span style="color: rgb(0, 128, 128); font-weight: bold;">Emmet</span>”包，点击 <span style="color: rgb(0, 128, 128); font-weight: bold;">Install </span>按钮即可安装。</p>
+<p><img src="images/01.png" border="0" alt="原文:Atom - Emmet插件的使用详解（HTML/CSS代码自动补全）" style="display: inline;"></p>
+<h1 class="title font anchorh2" id="a1-3">1-3. 简单的使用样例</h1>
+<p>（1）我们在编辑器中输入如下代码：</p>
+<figure class="highlight">
+<pre><code class="scss">ul>li*6</code>
+</pre>
+</figure>
+<p>接着按下 tab 键，之前的缩写代码就会自动扩展为完整的 html 代码片断。</p>
+<p><img src="images/02.png" alt=""></p>
+<p>以及下面的动画</p>
+<p><img src="images/04.gif" alt="emmet"/>
+</p>
+<h1 class="title font anchorh1" id="a2">二、基本语法</h1>
+<h1 class="title font anchorh2" id="a2-1">2-1. 后代：></h1>
+<p>缩写↓
+<figure class="highlight">
+<pre><code class="scss">nav>ul>li</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">nav</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">nav</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-2">2-2. 兄弟：+</h1>
+<p>缩写↓
+<figure class="highlight">
+<pre><code class="scss">div+p+bq</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a3">2-3. 上级：^</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">div+div>p>span+em^bq</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">em</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">em</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">div+div>p>span+em^^bq</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">em</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">em</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-1">2-4. 分组：()</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">div>(header>ul>li*2>a)+footer>p</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">header</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a href=""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a href=""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">header</code><code class="xml plain">&gt;</code></div><div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">footer</code><code class="xml plain">&gt;</code></div><div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code><code class="xml plain">&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">footer</code><code class="xml plain">&gt;</code></div><div class="line number11 index10 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">(div>dl>(dt+dd)*3)+footer>p</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dl</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml 
+spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dt</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">dt</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dd</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">dd</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dt</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">dt</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dd</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">dd</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dt</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">dt</code><code class="xml plain">&gt;</code></div><div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">dd</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">dd</code><code class="xml plain">&gt;</code></div><div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">dl</code><code class="xml plain">&gt;</code></div><div class="line number10 index9 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number11 index10 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">footer</code><code class="xml plain">&gt;</code></div><div class="line number12 index11 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number13 index12 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">footer</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-5">2-5. 乘法：*</h1>
+<p>缩写↓
+<figure class="highlight">
+<pre><code class="scss">ul>li*5</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-6">2-6.自增符号：$</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">ul>li.item$*5</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li class="item1"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li class="item2"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li class="item3"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li class="item4"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li class="item5"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">h$[title=item$]{Header $}*3</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">h1</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">"item1"</code><code class="xml plain">&gt;Header 1&lt;/</code><code class="xml keyword">h1</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">h2</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">"item2"</code><code class="xml plain">&gt;Header 2&lt;/</code><code class="xml keyword">h2</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">h3</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">"item3"</code><code class="xml plain">&gt;Header 3&lt;/</code><code class="xml keyword">h3</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(3)缩写↓
+<figure class="highlight">
+<pre><code class="scss">ul>li.item$$$*5</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item001"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item002"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item003"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item004"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item005"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(4)缩写↓
+<figure class="highlight">
+<pre><code class="scss">ul>li.item$@-*5</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item5"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item4"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item3"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item2"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item1"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(5)缩写↓
+<figure class="highlight">
+<pre><code class="scss">ul>li.item$@3*5</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item3"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item4"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item5"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item6"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"item7"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-7">2-7.ID和类属性</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">#header</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"header"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">.title</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"title"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(3)缩写↓
+<figure class="highlight">
+<pre><code class="scss">form#search.wide</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">form</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"search"</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"wide"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">form</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(4)缩写↓
+<figure class="highlight">
+<pre><code class="scss">p.class1.class2.class3</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">p</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"class1 class2 class3"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-8">2-8.自定义属性</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">p[title="Hello world"]</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">p</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">"Hello world"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">td[rowspan=2 colspan=3 title]</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">td</code> <code class="xml color1">rowspan</code><code class="xml plain">=</code><code class="xml string">"2"</code> <code class="xml color1">colspan</code><code class="xml plain">=</code><code class="xml string">"3"</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">td</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(3)缩写↓
+<figure class="highlight">
+<pre><code class="scss">[a='value1' b="value2"]</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">a</code><code class="xml plain">=</code><code class="xml string">"value1"</code> <code class="xml color1">b</code><code class="xml plain">=</code><code class="xml string">"value2"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-9">2-9.文本：{}</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">a{Click me}</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;Click me&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">p>{Click }+a{here}+{ to continue}</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;Click &lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;here&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt; to continue&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a2-10">2-10.隐式标签</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">.class</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"class"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">em>.class</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">em</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"class"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">em</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(3)缩写↓
+<figure class="highlight">
+<pre><code class="scss">ul>.class</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"class"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(4)缩写↓
+<figure class="highlight">
+<pre><code class="scss">table>.row>.col</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">table</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">tr</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"row"</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">td</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"col"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">td</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">tr</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">table</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh1" id="a3">三、HTML标签语法</h1>
+<h1 class="title font anchorh2" id="a3-1">3-1. 所有未知的缩写都会转换成标签</h1>
+<p>缩写↓
+<figure class="highlight">
+<pre><code class="scss">hangge</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">hangge</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">hangge</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<h1 class="title font anchorh2" id="a3-2">3-2.基本html标签</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">!</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;!DOCTYPE html&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">html</code> <code class="xml color1">lang</code><code class="xml plain">=</code><code class="xml string">"en"</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">head</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml color1">charset</code><code class="xml plain">=</code><code class="xml string">"UTF-8"</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">"viewport"</code> <code class="xml color1">content</code><code class="xml plain">=</code><code class="xml string">"width=device-width, initial-scale=1.0"</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml color1">http-equiv</code><code class="xml plain">=</code><code class="xml string">"X-UA-Compatible"</code> <code class="xml color1">content</code><code class="xml plain">=</code><code class="xml string">"ie=edge"</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">title</code><code class="xml plain">&gt;Document&lt;/</code><code class="xml keyword">title</code><code class="xml plain">&gt;</code></div><div class="line number8 index7 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">head</code><code class="xml plain">&gt;</code></div><div class="line number9 index8 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">body</code><code class="xml plain">&gt;</code></div><div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;</code>&nbsp;</div><div class="line number11 index10 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">body</code><code class="xml plain">&gt;</code></div><div class="line number12 index11 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">html</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">a</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(3)缩写↓
+<figure class="highlight">
+<pre><code class="scss">a:link</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"<a href="http://">http://</a>"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(4)缩写↓
+<figure class="highlight">
+<pre><code class="scss">a:mail</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"mailto:"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(5)缩写↓
+<figure class="highlight">
+<pre><code class="scss">abbr</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">abbr</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">abbr</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(6)缩写↓
+<figure class="highlight">
+<pre><code class="scss">acronym</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">acronym</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">acronym</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(7)缩写↓
+<figure class="highlight">
+<pre><code class="scss">base</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">base</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(8)缩写↓
+<figure class="highlight">
+<pre><code class="scss">basefont</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">basefont</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(9)缩写↓
+<figure class="highlight">
+<pre><code class="scss">br</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">br</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(10)缩写↓
+<figure class="highlight">
+<pre><code class="scss">frame</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">frame</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(11)缩写↓
+<figure class="highlight">
+<pre><code class="scss">hr</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">hr</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(12)缩写↓
+<figure class="highlight">
+<pre><code class="scss">bdo</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">bdo</code> <code class="xml color1">dir</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">bdo</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(13)缩写↓
+<figure class="highlight">
+<pre><code class="scss">bdo:r</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">bdo</code> <code class="xml color1">dir</code><code class="xml plain">=</code><code class="xml string">"rtl"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">bdo</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(14)缩写↓
+<figure class="highlight">
+<pre><code class="scss">bdo:l</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">bdo</code> <code class="xml color1">dir</code><code class="xml plain">=</code><code class="xml string">"ltr"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">bdo</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(15)缩写↓
+<figure class="highlight">
+<pre><code class="scss">col</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">col</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(16)缩写↓
+<figure class="highlight">
+<pre><code class="scss">link</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"stylesheet"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(17)缩写↓
+<figure class="highlight">
+<pre><code class="scss">link:css</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"stylesheet"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"style.css"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(18)缩写↓
+<figure class="highlight">
+<pre><code class="scss">link:print</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"stylesheet"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"print.css"</code> <code class="xml color1">media</code><code class="xml plain">=</code><code class="xml string">"print"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(19)缩写↓
+<figure class="highlight">
+<pre><code class="scss">link:favicon</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"shortcut icon"</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"image/x-icon"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"favicon.ico"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(20)缩写↓
+<figure class="highlight">
+<pre><code class="scss">link:touch</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"apple-touch-icon"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"favicon.png"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(21)缩写↓
+<figure class="highlight">
+<pre><code class="scss">link:rss</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"alternate"</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"application/rss+xml"</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">"RSS"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"rss.xml"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(22)缩写↓
+<figure class="highlight">
+<pre><code class="scss">link:atom</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">link</code> <code class="xml color1">rel</code><code class="xml plain">=</code><code class="xml string">"alternate"</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"application/atom+xml"</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">"Atom"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"atom.xml"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(23)缩写↓
+<figure class="highlight">
+<pre><code class="scss">meta</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(24)缩写↓
+<figure class="highlight">
+<pre><code class="scss">meta:utf</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml color1">http-equiv</code><code class="xml plain">=</code><code class="xml string">"Content-Type"</code> <code class="xml color1">content</code><code class="xml plain">=</code><code class="xml string">"text/html;charset=UTF-8"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(25)缩写↓
+<figure class="highlight">
+<pre><code class="scss">meta:win</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml color1">http-equiv</code><code class="xml plain">=</code><code class="xml string">"Content-Type"</code> <code class="xml color1">content</code><code class="xml plain">=</code><code class="xml string">"text/html;charset=windows-1251"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(26)缩写↓
+<figure class="highlight">
+<pre><code class="scss">meta:vp</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">"viewport"</code> <code class="xml color1">content</code><code class="xml plain">=</code><code class="xml string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(27)缩写↓
+<figure class="highlight">
+<pre><code class="scss">meta:compat</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">meta</code> <code class="xml color1">http-equiv</code><code class="xml plain">=</code><code class="xml string">"X-UA-Compatible"</code> <code class="xml color1">content</code><code class="xml plain">=</code><code class="xml string">"IE=7"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(28)缩写↓
+<figure class="highlight">
+<pre><code class="scss">style</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">style</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">style</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(29)缩写↓
+<figure class="highlight">
+<pre><code class="scss">script</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">script</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">script</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(30)缩写↓
+<figure class="highlight">
+<pre><code class="scss">script:src</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">script</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">script</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(31)缩写↓
+<figure class="highlight">
+<pre><code class="scss">img</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">img</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(32)缩写↓
+<figure class="highlight">
+<pre><code class="scss">iframe</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">iframe</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">frameborder</code><code class="xml plain">=</code><code class="xml string">"0"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">iframe</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(33)缩写↓
+<figure class="highlight">
+<pre><code class="scss">embed</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">embed</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(34)缩写↓
+<figure class="highlight">
+<pre><code class="scss">object</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">object</code> <code class="xml color1">data</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">object</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(35)缩写↓
+<figure class="highlight">
+<pre><code class="scss">param</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">param</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+<p>(36)缩写↓
+<figure class="highlight">
+<pre><code class="scss">map</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">map</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">map</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(37)缩写↓
+<figure class="highlight">
+<pre><code class="scss">area</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">area</code> <code class="xml color1">shape</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">coords</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(38)缩写↓
+<figure class="highlight">
+<pre><code class="scss">area:d</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">area</code> <code class="xml color1">shape</code><code class="xml plain">=</code><code class="xml string">"default"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(39)缩写↓
+<figure class="highlight">
+<pre><code class="scss">area:c</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">area</code> <code class="xml color1">shape</code><code class="xml plain">=</code><code class="xml string">"circle"</code> <code class="xml color1">coords</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(40)缩写↓
+<figure class="highlight">
+<pre><code class="scss">area:r</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">area</code> <code class="xml color1">shape</code><code class="xml plain">=</code><code class="xml string">"rect"</code> <code class="xml color1">coords</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(41)缩写↓
+<figure class="highlight">
+<pre><code class="scss">area:p</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">area</code> <code class="xml color1">shape</code><code class="xml plain">=</code><code class="xml string">"poly"</code> <code class="xml color1">coords</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(42)缩写↓
+<figure class="highlight">
+<pre><code class="scss">form</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">form</code> <code class="xml color1">action</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">form</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(43)缩写↓
+<figure class="highlight">
+<pre><code class="scss">form:get</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">form</code> <code class="xml color1">action</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">method</code><code class="xml plain">=</code><code class="xml string">"get"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">form</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(44)缩写↓
+<figure class="highlight">
+<pre><code class="scss">form:post</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">form</code> <code class="xml color1">action</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">method</code><code class="xml plain">=</code><code class="xml string">"post"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">form</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(45)缩写↓
+<figure class="highlight">
+<pre><code class="scss">label</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">label</code> <code class="xml color1">for</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">label</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(46)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(47)缩写↓
+<figure class="highlight">
+<pre><code class="scss">inp</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(48)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:hidden</code></pre>
+</figure>
+<small>别名：input[type=hidden name]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"hidden"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(49)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:h </code></pre>
+</figure>
+<small>别名：input:hidden</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"hidden"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(50)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:text, input:t </code></pre>
+</figure>
+<small>别名：inp</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(51)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:search</code></pre>
+</figure>
+<small>别名：inp[type=search]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"search"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(52)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:email </code></pre>
+</figure>
+<small>别名：inp[type=email]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"email"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(53)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:url</code></pre>
+</figure>
+<small>别名：inp[type=url]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(54)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:password</code></pre>
+</figure>
+<small>别名：inp[type=password]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"url"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(55)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:p</code></pre>
+</figure>
+<small>别名：input:password</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"password"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(56)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:datetime</code></pre>
+</figure>
+<small>别名：inp[type=datetime]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"datetime"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(57)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:date</code></pre>
+</figure>
+<small>别名：inp[type=date]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"date"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(58)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:datetime-local</code></pre>
+</figure>
+<small>别名：inp[type=datetime-local]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"datetime-local"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(59)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:month</code></pre>
+</figure>
+<small>别名：inp[type=month]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"month"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(60)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:week</code></pre>
+</figure>
+<small>别名：inp[type=week]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"week"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(61)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:time </code></pre>
+</figure>
+<small>别名：inp[type=time]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"time"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(62)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:number</code></pre>
+</figure>
+<small>别名：inp[type=number]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"number"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(63)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:color</code></pre>
+</figure>
+<small>别名：inp[type=color]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"color"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(64)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:checkbox</code></pre>
+</figure>
+<small>别名：inp[type=checkbox]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"checkbox"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(65)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:c</code></pre>
+</figure>
+<small>别名：input:checkbox</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"checkbox"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(66)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:radio </code></pre>
+</figure>
+<small>别名：inp[type=radio]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"radio"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(67)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:r</code></pre>
+</figure>
+<small>别名：input:radio</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"radio"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(68)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:range</code></pre>
+</figure>
+<small>别名：inp[type=range]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"range"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(69)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:file</code></pre>
+</figure>
+<small>别名：inp[type=file]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"file"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(70)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:f</code></pre>
+</figure>
+<small>别名：input:file</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"file"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(71)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:submit</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"submit"</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(72)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:s </code></pre>
+</figure>
+<small>别名：input:submit</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"submit"</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(73)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:image</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"image"</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(74)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:i </code></pre>
+</figure>
+<small>别名：input:image</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"image"</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(75)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:button</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"button"</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(76)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:b </code></pre>
+</figure>
+<small>别名：input:button</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"button"</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(77)缩写↓
+<figure class="highlight">
+<pre><code class="scss">isindex</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">isindex</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(78)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:reset </code></pre>
+</figure>
+<small>别名：input:button[type=reset]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"reset"</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(79)缩写↓
+<figure class="highlight">
+<pre><code class="scss">select</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">select</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">select</code><code class="xml plain">&gt;</code></div></div>
+<p>(80)缩写↓
+<figure class="highlight">
+<pre><code class="scss">option</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(81)缩写↓
+<figure class="highlight">
+<pre><code class="scss">textarea</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">textarea</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">cols</code><code class="xml plain">=</code><code class="xml string">"30"</code> <code class="xml color1">rows</code><code class="xml plain">=</code><code class="xml string">"10"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">textarea</code><code class="xml plain">&gt;</code></div></div></div>
+<p>(82)缩写↓
+<figure class="highlight">
+<pre><code class="scss">menu:context</code></pre>
+</figure>
+<small>别名：menu[type=context]></small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">menu</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"context"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">menu</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(83)缩写↓
+<figure class="highlight">
+<pre><code class="scss">menu:c</code></pre>
+</figure>
+<small>别名：menu:context</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">menu</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"context"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">menu</code><code class="xml plain">&gt;</code></div></div>
+<p>(84)缩写↓
+<figure class="highlight">
+<pre><code class="scss">menu:toolbar</code></pre>
+</figure>
+<small>别名：menu[type=toolbar]></small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">menu</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"toolbar"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">menu</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(85)缩写↓
+<figure class="highlight">
+<pre><code class="scss">menu:t</code></pre>
+</figure>
+<small>别名：menu:toolbar</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">menu</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"toolbar"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">menu</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(86)缩写↓
+<figure class="highlight">
+<pre><code class="scss">video</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">video</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">video</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(87)缩写↓
+<figure class="highlight">
+<pre><code class="scss">audio</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">audio</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">audio</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(88)缩写↓
+<figure class="highlight">
+<pre><code class="scss">html:xml</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">html</code> <code class="xml color1">xmlns</code><code class="xml plain">=</code><code class="xml string">"<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">html</code><code class="xml plain">&gt;</code></div></div>
+</p>
+<p>(89)缩写↓
+<figure class="highlight">
+<pre><code class="scss">keygen</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">keygen</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+<p>(90)缩写↓
+<figure class="highlight">
+<pre><code class="scss">command</code></pre>
+</figure>
+</p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">command</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+
+<p>(91)缩写↓
+<figure class="highlight">
+<pre><code class="scss">bq </code></pre>
+</figure>
+<small>别名：blockquote</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">blockquote</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+
+<p>(92)缩写↓
+<figure class="highlight">
+<pre><code class="scss">acr </code></pre>
+</figure>
+<small>别名：acronym</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">acronym</code> <code class="xml color1">title</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">acronym</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+<p>(93)缩写↓
+<figure class="highlight">
+<pre><code class="scss">fig </code></pre>
+</figure>
+<small>别名：figcaption</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">figure</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">figure</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+<p>(94)缩写↓
+<figure class="highlight">
+<pre><code class="scss">figc  </code></pre>
+</figure>
+<small>别名：figcaption</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">figcaption</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">figcaption</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+<p>(95)缩写↓
+<figure class="highlight">
+<pre><code class="scss">ifr </code></pre>
+</figure>
+<small>别名：iframe</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">iframe</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">frameborder</code><code class="xml plain">=</code><code class="xml string">"0"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">iframe</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+<p>(96)缩写↓
+<figure class="highlight">
+<pre><code class="scss">emb</code></pre>
+</figure>
+<small>别名：embed</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">embed</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div></div>
+</p>
+<p>(97)缩写↓
+<figure class="highlight">
+<pre><code class="scss">obj</code></pre>
+</figure>
+<small>别名：object</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">object</code> <code class="xml color1">data</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">object</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+<p>(98)缩写↓
+<figure class="highlight">
+<pre><code class="scss">src</code></pre>
+</figure>
+<small>别名：source</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">source</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">source</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+<p>(99)缩写↓
+<figure class="highlight">
+<pre><code class="scss">cap</code></pre>
+</figure>
+<small>别名：caption</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">caption</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">caption</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+<p>(100)缩写↓
+<figure class="highlight">
+<pre><code class="scss">colg</code></pre>
+</figure>
+<small>别名：colgroup</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">colgroup</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">colgroup</code><code class="xml plain">&gt;</code></div></div></div>
+</p>
+
+
+<p>(101)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:text, input:t </code></pre>
+</figure>
+<small>别名：inp</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+
+
+<p>(102)缩写↓
+<figure class="highlight">
+<pre><code class="scss">input:text, input:t</code></pre>
+</figure>
+<small>别名：inp</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml plain">/&gt;</code></div></div>
+</p>
+
+<p>(103)缩写↓
+<figure class="highlight">
+<pre><code class="scss">btn:r</code></pre>
+</figure>
+<small>别名：button[type=reset]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">button</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"reset"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">button</code><code class="xml plain">&gt;</code></div></div>
+</p>
+
+
+<p>(104)缩写↓
+<figure class="highlight">
+<pre><code class="scss">btn:s</code></pre>
+</figure>
+<small>别名：button[type=submit]</small></p>
+<p>展开输出↓
+<div class="emmetCode"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">button</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"submit"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">button</code><code class="xml plain">&gt;</code></div></div>
+</p>
+
+<h1 class="title font anchorh1" id="a4">四、CSS</h1>
+<h1 class="title font anchorh2" id="a4-1">4-1. CSS模块使用模糊搜索来查找未知的缩写</h1>
+<p>如： == <code>ov-h</code> == <code>ovh</code> == <code>oh</code></p>
+<p>如果没有找到缩写，则转换为属性名称:<code>foo-bar</code> → <code>foo-bar: |;</code></p>
+<p>您可以使用连字符作为前缀缩写以生成供应商的前缀属性： <code>-foo</code></p>
+<h1 class="title font anchorh2" id="a4-2">4-2. 常用样式简写</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">pos</code></pre>
+</figure></p>
+<p>展开输出↓
+<div class="emmetCode">
+<dd class="ch-snippet__value ch-snippet__value_snippet">position:<span title="Tabstop" class="ch-tabstop">relative</span>;</dd>
+</div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">t</code></pre>
+</figure></p>
+<p>展开输出↓
+<div class="emmetCode">
+<dd class="ch-snippet__value ch-snippet__value_snippet">top:<span title="Caret position" class="ch-caret"></span>;</dd>
+</div>
+</p>
+
+<h1 class="title font anchorh1" id="a5">五、XSL</h1>
+<p>(1)缩写↓
+<figure class="highlight">
+<pre><code class="scss">xsl</code></pre>
+</figure></p>
+<p>展开输出↓
+<div class="emmetCode">
+<dd class="ch-snippet__value ch-snippet__value_alias">
+<p class="cn-snippet__alias">Alias of <span class="cn-snippet__alias-abbr">!!!+xsl:stylesheet[version=1.0 xmlns:xsl=http://www.w3.org/1999/XSL/Transform]&gt;{
+|}</span></p>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;<span title="Caret position" class="ch-caret"></span>&lt;/xsl:stylesheet&gt;</dd>
+</div>
+</p>
+<p>(2)缩写↓
+<figure class="highlight">
+<pre><code class="scss">var</code></pre>
+</figure></p>
+<p>展开输出↓
+<div class="emmetCode">
+<dd class="ch-snippet__value ch-snippet__value_abbreviation">&lt;xsl:variable name="<span title="Caret position" class="ch-caret"></span>"&gt;<span title="Caret position" class="ch-caret"></span>&lt;/xsl:variable&gt;</dd>
+</div>
+</p>
+
+<p><a href="all.html">查看全部命令集>></a></p>
+<p><a href="//www.z01.com/blog/techs/2975.shtml">以及这里的一篇使用心得</a></p>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+<div class="clearfix"></div>
+<svg xmlns="http://www.w3.org/2000/svg" width="65px" height="65px" version="1.1">
+    <title>Emmet Logo</title>
+    <g transform="scale(0.1625)">
+    	<ellipse cx="200" cy="200" rx="200" ry="200" fill="rgb(28,28,32)"/>
+    	<g fill="rgb(215,215,215)" id="Logo" transform="rotate(-45) translate(-162, 133) scale(0.9)">
+    	    <path id="Tip" d="M247,225 L247,190 L293,162 L247,133 L247,99 L352,162 L247,225 Z M247,225" fill="rgb(186,255,169)"/>
+    	    <path id="Base" d="M102,312 L102,12 L207,75 L207,109 L132,64 L132,132 L181,162 L132,191 L132,259 L207,214 L207,249 L102,312 Z M102,312" fill="rgb(122,203,22)"/>
+    	</g>
+    </g>
+</svg>
+
+<small>https://emmet.io/</small>
+
+
+
+<script src="../js/jquery-3.2.1.slim.min.js"></script> 
+<script src="../v4/assets/js/docs.min.js"></script> 
+<script src="../v4/dist/js/popper.min.js"></script> 
+<script src="../v4/dist/js/bootstrap.min.js"></script> 
+</body>
+</html>

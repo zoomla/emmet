@@ -1,0 +1,67 @@
+//CSS预编译文件基于Sass语法
+//这是Zoomla!逐浪CMS团队优化的Sass模板，我们为你预置了逐浪字库官方团队的高品质webFont之CDN库，你可完全采用中文定义写作，如下面写法都是合格
+//$中国变量之一:12px;
+//$中国人民中华人民共和国变量之二:#ff0;
+//.a1{width:$中国变量之一 ;}
+//.a2{background: $中国人民中华人民共和国变量之二;}
+//建议CSS注释写在代码段的起始处以使阅读更加流畅
+
+/* 全局样式定义 Powered by Zoomla!逐浪CMS z01.com*/
+@import url("//code.z01.com/Zfont.css");
+@import url("/dist/css/ZLico.css");
+$pink-color:#c69;
+
+
+.jumbotron{margin-top: -3.6rem;}
+
+h1 small{font-size: 50%; font-weight: 100;}
+
+/*下载按钮*/
+.btn-bd-yellow {     font-weight: 500; color: rgba(134, 142, 150, 1); border-color: rgba(134, 142, 150, 1);
+}
+
+
+/*左侧滚动*/
+.title-inner,.sidebar .h2 { display: block; margin-left:-1rem; margin-top:1rem;margin-bottom:1.4rem; font-size: 1.12rem; font-weight: 600;}
+.sidebar {
+    margin-top:1rem;
+    li a { color:$pink-color; text-decoration: none; font-size: 1rem;}
+    li a:hover { color:#162A46;}
+    .h3 { font-size:1.12rem; font-weight: normal;}
+    .h4 { margin-left:1rem;font-size:1.12rem; font-weight: normal;}
+}
+.bd-sidebar { overflow-y:auto;}
+
+
+.bd-content{
+	.anchorh1{ padding-top: 2rem; font-size: 2.0rem; font-weight: 900;}
+	.anchorh2{padding-left: 3rem; margin-top: 1.28rem; line-height: 3rem; font-size: 1.38rem;border-left: 6px solid #2D9900;    background-color: #f5f5f5;}
+}
+
+
+.emmetCode{
+	padding: 1rem 2rem; line-height: 1; border: 1px solid #ccc; border-radius: 0.2rem;
+	code{padding: 0;background-color:#fff;}
+}
+
+/*鼠标状态的交通*/
+.ch-tabstop {
+    background: #8eb632;
+    display: inline-block;
+    padding: 0 5px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 4px;
+}
+.ch-caret {
+    border-left: 2px solid #578fe3;
+    margin: 0 2px -.1em;
+    display: inline-block;
+    height: 1.1em;
+}
+
+
+
+/*key:UG93ZXJlZCBieSBab29tbGEh6YCQ5rWqQ01TIHd3d3cuejAxLmNvbQ== */
